@@ -1,31 +1,3 @@
-🍔 Food Detective – Scrape Review (Foody.vn)
-⚠️ BẮT BUỘC ĐỌC TRƯỚC KHI CHẠY
-
-Script này dùng để scrape REVIEW từ Foody.vn.
-
-Foody hiện có cơ chế chống bot rất mạnh.
-👉 Nếu KHÔNG đăng nhập Foody trong trình duyệt Playwright, script sẽ:
-
-❌ Chỉ lấy được ~10–13 review / nhà hàng
-
-❌ KHÔNG scrape được toàn bộ review
-
-❌ Kết quả KHÔNG đạt yêu cầu
-
-✅ YÊU CẦU BẮT BUỘC
-
-Python ≥ 3.9
-
-Playwright đã cài browser
-
-Tài khoản Foody hợp lệ
-
-Trình duyệt KHÔNG chạy headless
-
-🔧 CÀI ĐẶT (CHỈ CẦN 1 LẦN)
-pip install playwright beautifulsoup4 requests
-python3 -m playwright install chromium
-
 🧪 BƯỚC 1 – TEST (BẮT BUỘC)
 
 👉 Luôn chạy test trước khi scrape hàng loạt
@@ -84,11 +56,15 @@ Trong Terminal phải thấy:
 👉 Lớn hơn 13 review → OK
 
 🚀 CÁC SCRIPT CÓ SẴN
-1️⃣ test_review.py
+1️⃣ test_review.py ⭐ BẮT ĐẦU TỪ ĐÂY
 
 Test 1 URL
 
-Xác nhận login + scroll OK
+Xác nhận:
+
+Login Foody OK
+
+Scroll load review OK
 
 Dùng để debug
 
@@ -100,9 +76,9 @@ Chạy nhiều URL (số lượng ít)
 
 ❌ Không resume
 
-Dùng cho demo / test nhỏ
+Phù hợp demo / test nhỏ
 
-3️⃣ scrape_review_advanced.py ⭐
+3️⃣ scrape_review_advanced.py ⭐ KHUYÊN DÙNG
 
 Chạy toàn bộ dữ liệu
 
@@ -112,144 +88,31 @@ Chạy toàn bộ dữ liệu
 
 ✅ Auto retry
 
+Hiển thị progress & ETA
+
 Dùng cho production
 
-⛔ NHỮNG ĐIỀU KHÔNG ĐƯỢC LÀM
-
-❌ Không chạy headless=True
-
-❌ Không nhấn ENTER khi chưa đăng nhập
-
-❌ Không scroll quá nhanh
-
-❌ Không mở thêm tab trong browser
-
-❌ Không đóng browser khi script đang chạy
-
-🐛 XỬ LÝ LỖI THƯỜNG GẶP
-❌ Chỉ scrape được 13 review
-
-👉 Chưa đăng nhập Foody
-👉 Login lại, chạy lại script
-
-❌ Browser không mở
-
-👉 Chưa cài browser cho Playwright
-
-python3 -m playwright install chromium
-
-❌ File không được tạo
-
-👉 Chưa tạo thư mục data/
-
-mkdir data
-
-📊 OUTPUT FORMAT
-{
-  "url": "https://www.foody.vn/...",
-  "review": [
-    {
-      "ID": "...",
-      "RestaurantID": "...",
-      "UserID": "...",
-      "Rating": "...",
-      "Content": "...",
-      "CreatedAt": "..."
-    }
-  ],
-  "initData": {}
-}
-
-🧠 GHI NHỚ QUAN TRỌNG NHẤT
-
-Scrape review Foody = BẮT BUỘC LOGIN + BROWSER THẬT + SCROLL THẬT
-
-Nếu thiếu 1 trong 3, kết quả sẽ KHÔNG ĐÚNG.
-
-✅ CHECKLIST TRƯỚC KHI CHẠY FULL
-
- Đã chạy test_review.py
-
- Đăng nhập Foody thành công (thấy avatar)
-
- Review > 13
-
- Browser không headless
-
- Thư mục data/ tồn tại
-
-🎯 KẾT LUẬN
-
-Pipeline scrape review đã sẵn sàng.
-Tester chỉ cần:
-
-cd review
-python test_review.py
-
-
-Nếu OK → chạy:
-
-python scrape_review_advanced.py
-
-🍔 Food Detective – Tóm Tắt Hoàn Chỉnh (Scrape Review)
-✅ ĐÃ TẠO XONG
-
-Tôi đã tạo đầy đủ các công cụ để scrape REVIEW từ Foody.vn bằng browser automation (Playwright), vượt qua giới hạn ~13 review.
-
-📦 CÁC FILE ĐÃ TẠO
-🔧 Scripts (5 files)
-
-test_review.py ⭐ BẮT ĐẦU TỪ ĐÂY
-
-Test với 1 URL nhà hàng
-
-Kiểm tra đăng nhập Foody
-
-Kiểm tra scroll load review
-
-Xác nhận scrape được >13 review
-
-scrape_review.py
-
-Script đơn giản để scrape review cho nhiều URLs
-
-❌ Không có checkpoint
-
-Phù hợp test data nhỏ / demo
-
-scrape_review_advanced.py ⭐ KHUYÊN DÙNG
-
-Script nâng cao để scrape toàn bộ URLs
-
-✅ Có checkpoint
-
-✅ Có thể dừng (Ctrl+C) và resume
-
-✅ Auto-retry khi lỗi
-
-Hiển thị progress và ETA
-
-run.py
+4️⃣ run.py
 
 Menu tương tác để chọn script
 
 Giống cấu trúc run.py của initData
 
-demo.py
+5️⃣ demo.py
 
 Hiển thị thống kê tổng quan review
 
-Không thực hiện scrape
+KHÔNG scrape
 
-📖 Documentation (2 files)
+📖 DOCUMENTATION
 
-README.md – Hướng dẫn đầy đủ và chi tiết (file này)
+README.md – Hướng dẫn đầy đủ (file này)
 
-QUICKSTART.md – Hướng dẫn nhanh để bắt đầu
+QUICKSTART.md – Hướng dẫn nhanh
 
-📊 Data Files
+📊 DATA FILES
 
-final_result_link.json – 7,579 links nhà hàng ở Hà Nội (dùng chung với initData)
+final_result_link.json – 7,579 links nhà hàng Hà Nội
 
 data/test_review_result.json – Kết quả test mẫu (1 nhà hàng)
 
@@ -257,38 +120,31 @@ data/review_result.json – Kết quả scrape review
 
 data/checkpoint.json – Trạng thái resume
 
-data/scrape_errors.json – Log lỗi khi scrape
+data/scrape_errors.json – Log lỗi
 
 🚀 CÁCH SỬ DỤNG NHANH
-Bước 1: Cài đặt (chỉ cần 1 lần)
-pip3 install playwright beautifulsoup4 requests
-python3 -m playwright install chromium
-
-Bước 2: Test thử với 1 nhà hàng (BẮT BUỘC)
+Bước 1: Test (BẮT BUỘC)
 cd review
 python3 test_review.py
 
 
 ➡️ Khi browser mở ra:
 
-Đăng nhập Foody bằng tài khoản thật
+Đăng nhập Foody
 
-Sau khi thấy avatar → quay lại terminal → nhấn ENTER
-➡️ Xem kết quả trong data/test_review_result.json
+Thấy avatar
 
-❗ Nếu số review ≤ 13 → đăng nhập chưa đúng, KHÔNG chạy bước tiếp theo
+Quay lại terminal → nhấn ENTER
 
-Bước 3: Chạy cho TẤT CẢ nhà hàng
+➡️ Xem kết quả trong:
+
+data/test_review_result.json
+
+
+❗ Nếu review ≤ 13 → login chưa đúng, KHÔNG chạy tiếp
+
+Bước 2: Chạy full
 python3 scrape_review_advanced.py
-
-
-Lưu ý:
-
-⏱️ Mất khoảng 4–6 giờ (phụ thuộc số review)
-
-✅ Có thể dừng (Ctrl+C) và chạy lại để resume
-
-💾 Tự động lưu kết quả theo checkpoint
 
 🎯 DỮ LIỆU NHẬN ĐƯỢC
 
@@ -308,7 +164,7 @@ Nội dung review
 
 Thời gian tạo (relative time từ Foody)
 
-📊 VÍ DỤ DỮ LIỆU
+📊 VÍ DỤ OUTPUT
 {
   "url": "https://www.foody.vn/ha-noi/pizza-hut-xuan-thuy",
   "review": [
@@ -324,49 +180,54 @@ Thời gian tạo (relative time từ Foody)
   "initData": {}
 }
 
-💡 MẸO QUAN TRỌNG
-✅ Nên làm:
-
-Luôn chạy test_review.py trước
-
-Kiểm tra review >13 trước khi chạy full
-
-Dùng scrape_review_advanced.py cho production
-
-Để máy chạy qua đêm
-
-⚠️ Lưu ý:
-
-❗ BẮT BUỘC đăng nhập Foody
+⛔ NHỮNG ĐIỀU KHÔNG ĐƯỢC LÀM
 
 ❌ Không chạy headless=True
 
+❌ Không nhấn ENTER khi chưa đăng nhập
+
 ❌ Không scroll quá nhanh
 
-❌ Không mở nhiều tab trong browser
+❌ Không mở thêm tab
 
-Có delay ~1.5–2s giữa các lần scroll
+❌ Không đóng browser khi script đang chạy
 
-🐛 Nếu gặp lỗi:
+🐛 XỬ LÝ LỖI THƯỜNG GẶP
+❌ Chỉ scrape được 13 review
 
-Chạy python3 test_review.py để kiểm tra login + scroll
+👉 Chưa đăng nhập Foody
+👉 Login lại, chạy lại script
 
-Kiểm tra thư mục data/ đã tồn tại chưa
-
-Xem file data/scrape_errors.json để biết URL lỗi
-
-Đảm bảo đã chạy:
-
+❌ Browser không mở
 python3 -m playwright install chromium
 
+❌ File không được tạo
+mkdir data
+
+🧠 GHI NHỚ QUAN TRỌNG NHẤT
+
+Scrape review Foody = BẮT BUỘC
+
+Login thật
+
+Browser thật
+
+Scroll thật
+
+❗ Thiếu 1 trong 3 → kết quả KHÔNG ĐÚNG
+
 📈 TIẾN ĐỘ DỰ KIẾN
-📊 Tổng số: 7,579 nhà hàng
+
+📊 Tổng nhà hàng: 7,579
+
 🧾 Tổng review: hàng trăm nghìn
-⏱️  Thời gian: ~4–6 giờ
-💾 Kích thước output: ~300–500 MB
+
+⏱️ Thời gian: ~4–6 giờ
+
+💾 Output: ~300–500 MB
 
 🎬 BẮT ĐẦU NGAY
-# 1. Test (1 phút)
+# 1. Test
 python3 test_review.py
 
 # 2. Xem thống kê
@@ -385,10 +246,6 @@ File data/review_result.json chứa:
 
 ✅ Format JSON thống nhất với initData
 
-✅ Sẵn sàng gộp dataset & phân tích
+✅ Sẵn sàng phân tích & gộp dataset
 
-
-Nếu OK → chạy:
-
-python scrape_review_advanced.py
-
+🔥 Nếu test OK → chạy scrape_review_advanced.py
