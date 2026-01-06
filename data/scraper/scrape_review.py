@@ -2,7 +2,7 @@ from playwright.sync_api import sync_playwright, TimeoutError
 import json
 import time
 
-INPUT_LINKS = "dan/foody_links_more_than_0_reviews.txt"
+INPUT_LINKS = "data/raw_data/foody_links_more_than_0_reviews.txt"
 OUTPUT_JSONL = "data/raw_data/reviews.jsonl"
 FAILED_LINKS = "dan/failed_links.txt"
 
